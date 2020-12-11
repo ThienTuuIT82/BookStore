@@ -1,0 +1,38 @@
+<h1 class="text-center">WELCOME TO ADMIN PAGE</h1>
+        {% if current_user.UserRole == 'UserRole.Employee' %}
+            <h1 class="text-center">Employee {{ current_user.name }}</h1>
+        {% else %}
+            <h1 class="text-center">Manager {{ current_user.name }}</h1>
+        {% endif %}
+        <table class="table table-center" style="width:80%; margin:0 auto">
+            <thead class="thead-dark">
+            <tr>
+                <th scope="col">Bill ID</th>
+                <th scope="col">Customer Name</th>
+                <th scope="col">Date</th>
+                <th scope="col">Total Bill</th>
+                <th scope="col">Trạng thái</th>
+                <th scope="col">Chi tiết</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for b in bill %}
+            <tr>
+                <th scope="row">#{{ b.bill_id }}</th>
+                <td>{{ b.customer_id }}</td>
+                <td>{{ b.date }}</td>
+                <td>{{ b.total_price }}</td>
+                <td>{{ b.paid }}</td>
+                <td><a class="fa fa-info"></a></td>
+            </tr>
+            {% endfor %}
+            <tr>
+                <th scope="row">#fsd</th>
+                <td>dsac</td>
+                <td>asva</td>
+                <td>fd{</td>
+                <td>fdsv</td>
+                <td><a class="fa fa-info"></a></td>
+            </tr>
+            </tbody>
+        </table>

@@ -1,0 +1,19 @@
+
+<h1 class="text-center text-info">ADMIN LOGIN</h1>
+<form action="{{url_for('login_admin')}}" method="post">
+        <div class="form-group">
+            <label>Username</label>
+            <input class="form-control" name="username" type="text" placeholder="Username" />
+        </div>
+        <div class="form-group">
+            <label>Password</label>
+            <input class="form-control" name="password" type="password" placeholder="Password" />
+        </div>
+    {% if err_msg %}
+        <div class="alert alert-danger">{{err_msg}}</div>
+    {% endif %}
+
+        <div>
+            <input type="submit" class="btn btn-danger" value="Login" />
+        </div>
+</form>

@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<br>
+<br>
+<div class="container p-3 my-3 border text-warning text-center">
+    <h1>Bạn đã xác thực Email thành công</h1>
+    <p>Vui lòng bấm vào Button bên dưới để đăng nhập</p>
+    <br>
+    <a href="{{url_for('login_usr')}}">
+        <input class="btn btn-primary avatar-btn" value="Đăng Nhập" type="button"/>
+    </a>
+</div>
+<br>
+<br>
+{% endblock %}

@@ -1,0 +1,27 @@
+        <!-- Sidebar  -->
+        <nav id="sidebar">
+            <div class="sidebar-header">
+                <h3>Admin Dashboard</h3>
+                <strong>AD</strong>
+            </div>
+
+            {% block main_menu %}
+        <ul class="navbar-bar mr-auto list-group">
+            {{ layout.menu() }}
+        </ul>
+        {% endblock %}
+
+        {% block menu_links %}
+            {{ layout.menu_links() }}
+        {% endblock %}
+
+            <ul class="list-unstyled CTAs">
+                <li>
+                    <a href="https://bootstrapious.com/tutorial/files/sidebar.zip" class="download">Download source</a>
+                </li>
+                <li>
+                    <a href="{{url_for('index')}}" class="article">Back to Book Store</a>
+                </li>
+            </ul>
+        </nav>
+

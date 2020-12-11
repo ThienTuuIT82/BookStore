@@ -1,0 +1,155 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<!-- products-breadcrumb -->
+	<div class="products-breadcrumb">
+		<div class="container">
+			<ul>
+				<li><i class="fa fa-home" aria-hidden="true"></i><a href="index.html">Home</a><span>|</span></li>
+				<li>Checkout</li>
+			</ul>
+		</div>
+	</div>
+<!-- //products-breadcrumb -->
+<!-- banner -->
+	<div class="banner">
+		<div class="w3l_banner_nav_left">
+			<nav class="navbar nav_bottom">
+			 <!-- Brand and toggle get grouped for better mobile display -->
+			  <div class="navbar-header nav_2">
+				  <button type="button" class="navbar-toggle collapsed navbar-toggle1" data-toggle="collapse" data-target="#bs-megadropdown-tabs">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				  </button>
+			   </div>
+			   <!-- Collect the nav links, forms, and other content for toggling -->
+				<div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
+					<ul class="nav navbar-nav nav_1">
+						<li><a href="products.html">Branded Foods</a></li>
+						<li><a href="household.html">Households</a></li>
+						<li class="dropdown mega-dropdown active">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Veggies & Fruits<span class="caret"></span></a>
+							<div class="dropdown-menu mega-dropdown-menu w3ls_vegetables_menu">
+								<div class="w3ls_vegetables">
+									<ul>
+										<li><a href="vegetables.html">Vegetables</a></li>
+										<li><a href="vegetables.html">Fruits</a></li>
+									</ul>
+								</div>
+							</div>
+						</li>
+						<li><a href="kitchen.html">Kitchen</a></li>
+						<li><a href="short-codes.html">Short Codes</a></li>
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Beverages<span class="caret"></span></a>
+							<div class="dropdown-menu mega-dropdown-menu w3ls_vegetables_menu">
+								<div class="w3ls_vegetables">
+									<ul>
+										<li><a href="drinks.html">Soft Drinks</a></li>
+										<li><a href="drinks.html">Juices</a></li>
+									</ul>
+								</div>
+							</div>
+						</li>
+						<li><a href="pet.html">Pet Food</a></li>
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Frozen Foods<span class="caret"></span></a>
+							<div class="dropdown-menu mega-dropdown-menu w3ls_vegetables_menu">
+								<div class="w3ls_vegetables">
+									<ul>
+										<li><a href="frozen.html">Frozen Snacks</a></li>
+										<li><a href="frozen.html">Frozen Nonveg</a></li>
+									</ul>
+								</div>
+							</div>
+						</li>
+						<li><a href="bread.html">Bread & Bakery</a></li>
+					</ul>
+				 </div><!-- /.navbar-collapse -->
+			</nav>
+		</div>
+		<div class="w3l_banner_nav_right">
+<!-- about -->
+		<div class="privacy about">
+			<h3>Chec<span>kout</span></h3>
+
+	      <div class="checkout-right">
+					<h4>Your shopping cart contains: <span>3 Products</span></h4>
+				<table class="timetable_sub">
+					<thead>
+						<tr>
+							<th>SL No.</th>
+							<th>Product</th>
+							<th>Quantity</th>
+							<th>Product Name</th>
+
+							<th>Price</th>
+						</tr>
+					</thead>
+					<tbody>
+					{% for b in books %}
+					<tr class="rem1">
+						<td class="invert" style="font-size:25px">{{ loop.index }}</td>
+						<td class="invert-image"><a href="single.html"><img src="{{b[3]}}" alt=" " class="img-responsive"></a></td>
+						<td class="invert" style="font-size:25px">{{ b[1] }}</td>
+						<td class="invert" style="font-size:25px">{{ b[0] }}</td>
+						<td class="invert" style="font-size:25px">{{ "{:,.1f}".format(b[2]) }} VND</td>
+					</tr>
+					{% endfor %}
+				</tbody></table>
+			</div>
+			<div class="checkout-left">
+				<div class="col-md-4 checkout-left-basket">
+					<h4>Total Bill</h4>
+					<ul>
+						{% for b in books %}
+						<li style="font-size:15px">{{ b[0] }} x amount {{ b[1] }} <i>-</i> <span>{{ "{:,.1f}".format(b[2]) }} VND</span></li>
+						{% endfor %}
+						<li style="font-size:20px; font-weight:bold">Total price <i>-</i> <span>{{ "{:,.1f}".format(total) }} VND</span></li>
+					</ul>
+				</div>
+				<div class="col-md-8 address_form_agile">
+					  <h4>Add a new Details</h4>
+				<form action="{{ url_for('payment') }}" method="post" class="creditly-card-form agileinfo_form">
+									<section class="creditly-wrapper wthree, w3_agileits_wrapper">
+										<div class="information-wrapper">
+											<div class="first-row form-group">
+												<div class="controls">
+													<label class="control-label">Full name: </label>
+													<input class="billing-address-name form-control" type="text" name="name" placeholder="Full name" value="{{ current_user.name }}">
+												</div>
+												<div class="w3_agileits_card_number_grids">
+													<div class="w3_agileits_card_number_grid_left">
+														<div class="controls">
+															<label class="control-label">Mobile number:</label>
+														    <input class="form-control" name="phone" type="text" placeholder="Mobile number" value="{{ current_user.phone }}">
+														</div>
+													</div>
+													<div class="w3_agileits_card_number_grid_right">
+														<div class="controls">
+															<label class="control-label">Address: </label>
+														 <input class="form-control" name="address" type="text" placeholder="Your address" value="{{ current_user.address }}">
+														</div>
+													</div>
+													<div class="clear"> </div>
+												</div>
+											</div>
+										</div>
+									</section>
+									<input type="submit" value="Make a Payment">
+								</form>
+					</div>
+
+				<div class="clearfix"> </div>
+
+			</div>
+
+		</div>
+<!-- //about -->
+		</div>
+		<div class="clearfix"></div>
+	</div>
+<!-- //banner -->
+{% endblock %}
