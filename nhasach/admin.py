@@ -5,7 +5,6 @@ from flask import redirect, session
 from nhasach import admin, db
 from nhasach.models import Category, InfoBook, User, EnumRole, Bill, BillDetail, OrderDetail
 
-
 class CustomModelView(ModelView):
     list_template = 'admin/model/model_list.html'
     create_template = 'admin/model/model_create.html'
@@ -16,12 +15,12 @@ class CustomModelView(ModelView):
     can_export = True
     column_exclude_list = ['password']
 
-
+#View dành cho quản lý
 class ManagerModelView(CustomModelView):
     def is_accessible(self):
         return current_user.is_authenticated and current_user.UserRole == EnumRole.Manager
 
-
+#View dành cho nhân viên
 class EmployeeModelView(CustomModelView):
     def is_accessible(self):
         return current_user.is_authenticated and (current_user.UserRole == EnumRole.Manager or current_user.UserRole == EnumRole.Manager)

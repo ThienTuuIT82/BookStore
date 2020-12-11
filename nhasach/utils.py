@@ -21,7 +21,7 @@ def check_password(username, password):
                              User.password == password).first()
     return user
 
-
+#kiểm tra tên user đã sử dụng
 def check_username_used(username):
     user = User.query.filter(User.username == username.strip()).first()
     return user
