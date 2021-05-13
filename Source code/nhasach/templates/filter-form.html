@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<!-- products-breadcrumb -->
+	<div class="products-breadcrumb">
+		<div class="container">
+			<ul>
+				<li><i class="fa fa-home" aria-hidden="true"></i><a href="{{url_for('index')}}">Home</a><span>|</span></li>
+				<li style="color:white">Filter Form</li>
+			</ul>
+		</div>
+	</div>
+<!-- //products-breadcrumb -->
+{% include 'sidebar.html' %}
+{% include 'filter.html' %}
+<div class="banner">
+		<div class="w3l_banner_nav_right">
+			<div class="w3ls_w3l_banner_nav_right_grid">
+				<div class="w3ls_w3l_banner_nav_right_grid1">
+					{% for p in products %}
+					<div class="col-md-3 w3ls_w3l_banner_left">
+						<div class="hover14 column product-margin">
+							<div class="agile_top_brand_left_grid w3l_agile_top_brand_left_grid">
+								<div class="agile_top_brand_left_grid_pos">
+									<img src="static/images/offer.png" alt=" " class="img-responsive" />
+								</div>
+								<div class="agile_top_brand_left_grid1">
+									<figure>
+										<div class="snipcart-item block">
+											<div class="snipcart-thumb">
+												<a href="single?bookid={{p.id}}"><img src="{{ p.image }}" alt=" " class="img-responsive" /></a>
+												<p>{{p.name}}</p>
+												<h4>{{ "{:,.1f}".format(p.price - 0.1*p.price) }} VNĐ<span>{{ "{:,.1f}".format(p.price) }} VNĐ</span></h4>
+											</div>
+											<div class="snipcart-details">
+												<form action="#" method="post">
+													<fieldset>
+														<input type="hidden" name="cmd" value="_cart" />
+														<input type="hidden" name="add" value="1" />
+														<input type="hidden" name="business" value=" " />
+														<input type="hidden" name="item_name" value="{{ p.name }}" />
+														<input type="hidden" name="amount" value="{{ p.price }}" />
+														<input type="hidden" name="discount_amount" value="{{ p.price*0.1 }}" />
+														<input type="hidden" name="currency_code" value="VND" />
+														<input type="hidden" name="return" value=" " />
+														<input type="hidden" name="cancel_return" value=" " />
+														<input type="submit" name="submit" value="Add to cart" class="button" />
+													</fieldset>
+												</form>
+											</div>
+										</div>
+									</figure>
+								</div>
+							</div>
+						</div>
+					</div>
+					{% endfor %}
+					<div class="clearfix"></div>
+				</div>
+			</div>
+		</div>
+	<div class="clearfix"></div>
+</div>
+{% include 'subscribe.html' %}
+{% endblock %}

@@ -1,0 +1,101 @@
+{% extends 'base.html' %}
+{% block content %}
+<script>
+	jQuery(document).ready(function () {
+paypal.minicart.reset();
+});
+</script>
+<!-- products-breadcrumb -->
+	<div class="products-breadcrumb">
+		<div class="container">
+			<ul>
+				<li><i class="fa fa-home" aria-hidden="true"></i><a href="{{url_for('index')}}">Home</a><span>|</span></li>
+				<li style="color:white">Payment</li>
+			</ul>
+		</div>
+	</div>
+<!-- //products-breadcrumb -->
+<!-- banner -->
+	<div class="banner">
+		{% include 'sidebar.html' %}
+		<div class="w3l_banner_nav_right">
+<!-- payment -->
+		<div class="privacy about">
+			<h3>Pay<span>ment</span></h3>
+			{%if suc_msg %}
+			<br>
+			<div class="container p-3 my-3 border alert alert-success text-center">
+    		<h1>{{ suc_msg }}</h1>
+			</div>
+			{% endif %}
+			{%if err_msg %}
+			<br>
+			<div class="container p-3 my-3 border alert alert-danger text-center">
+    		<h1>{{ err_msg }}</h1>
+			</div>
+			{% endif %}
+			{% if not suc_msg and not err_msg %}
+	         <div class="checkout-right">
+				<!--Horizontal Tab-->
+        <div id="parentHorizontalTab">
+            <ul class="resp-tabs-list hor_1">
+				<li>Cash on delivery (COD)</li>
+                <li>MOMO Account</li>
+            </ul>
+            <div class="resp-tabs-container hor_1">
+				<div>
+				<form action="{{ url_for('payment') }}" method="post" class="creditly-card-form agileinfo_form">
+					<div class="vertical_post check_box_agile">
+						<h5>COD</h5>
+						<div class="checkbox">
+							<div class="check_box_one cashon_delivery">
+								<label class="anim">
+									<input type="checkbox" class="checkbox">
+									<span> Đơn hàng này sẽ được ghi nợ cho đến khi bạn nhận được hàng. Chúng tôi còn hỗ trợ những phương thức thanh toán trục tuyến khác bạn có thể xem qua. Nếu chấp nhận vui lòng Check vào ô.</span>
+								</label>
+							</div>
+						</div>
+						<div class="credit-card-wrapper">
+							<input type="submit" style="padding: 10px 0 10px;width:15%;border: 1px solid;background-image: linear-gradient(to right, #fc4a1a , #f7b733)" value="MAKE A PAYMENT">
+							<input type="hidden" style="background-color:transparent" name="delivery" value="cod">
+							<input type="hidden" style="background-color:transparent" name="order_id" value="{{order_id}}">
+						</div>
+					</div>
+				</form>
+				</div>
+
+
+                <div>
+					<form action="{{ url_for('payment') }}" method="post" class="creditly-card-form agileinfo_form">
+                    <div id="tab4" class="tab-grid" style="display: block;">
+						<div class="row">
+                        <div class="col-md-6">
+                            <img class="pp-img" src="static/images/momo.png" alt="Image Alternative text" title="Image Title">
+                            <p>Thanh toán nhanh qua ứng dụng MOMO</p><input type="submit" style="padding: 10px 0 10px;width:30%;border: 1px solid;background-image: linear-gradient(to right, #fc4a1a , #f7b733)" value="Checkout MOMO"><input type="hidden" style="background-color:transparent" name="delivery" value="momo">
+							<input type="hidden" style="background-color:transparent" name="order_id" value="{{order_id}}">
+                        </div>
+                        <div class="col-md-6">
+                            <img class="pp-img" src="static/images/qr.png" alt="Image Alternative text" title="Image Title">
+                        </div>
+                    </div>
+					</div>
+					</form>
+                </div>
+
+            </div>
+        </div>
+
+	<!--Plug-in Initialisation-->
+
+	<!-- // Pay -->
+
+			 </div>
+		{% endif %}
+		</div>
+<!-- //payment -->
+		</div>
+		<div class="clearfix"></div>
+	</div>
+<!-- //banner -->
+{% include 'subscribe.html' %}
+{% endblock %}

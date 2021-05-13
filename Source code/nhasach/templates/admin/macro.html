@@ -1,0 +1,10 @@
+<!-- Macro dành cho ô lựa chọn tác vụ ở trang chủ -->
+{% macro task(name, description, role) -%}
+<div class="card bg-light mb-3" style="max-width: 18rem;">
+  <div class="card-header">{{ name }}</div>
+  <div class="card-body">
+    <h5 class="card-title">{{ role }}</h5>
+    <p class="card-text">{{ description }}</p>
+  </div>
+</div>
+{%- endmacro %}

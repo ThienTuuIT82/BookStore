@@ -1,0 +1,113 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<!-- products-breadcrumb -->
+	<div class="products-breadcrumb">
+		<div class="container">
+			<ul>
+				<li><i class="fa fa-home" aria-hidden="true"></i><a href="{{url_for('index')}}">Home</a><span>|</span></li>
+				<li style="color:white">Profile</li>
+			</ul>
+		</div>
+	</div>
+<!-- //products-breadcrumb -->
+		<div class="w3_login">
+			<h3>Your Profile</h3>
+            <br/>
+            <div class="form">
+                <form action="{{url_for('edit_profile')}}" method="post" enctype="multipart/form-data">
+                    <div class="row">
+                        <div class="col-md-3 border-right">
+                            <div class="align-items-center text-center p-3 py-5">
+                                <img id="img" class="avatar mt-5" src="{{ current_user.avatar }}" width="90">
+                                <div class="d-flex justify-content-center">
+                                    <script>
+                                        function readURL(input) {
+                                            if (input.files && input.files[0]) {
+                                                var reader = new FileReader();
+
+                                                reader.onload = function (e) {
+                                                    $('#img')
+                                                        .attr('src', e.target.result)
+                                                };
+
+                                                reader.readAsDataURL(input.files[0]);
+                                            }
+                                        }
+                                    </script>
+                                  <label class="btn btn-primary avatar-btn">
+                                      Choose File<input name="avatar" id="avatar" onchange="readURL(this);" type="file" style="display: none;">
+                                  </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="p-3 py-5">
+                                <div class="row mt-2">
+                                    <div class="col-md-6 form-group">
+                                        <label>Name</label>
+                                        <input type="text" class="form-control" name="name" placeholder="Write your name" value="{{ current_user.name }}">
+                                    </div>
+                                    <div class="col-md-6 form-group">
+                                        <label>Identity Card</label>
+                                        <input type="text" class="form-control" name="cmnd" value="{{ current_user.cmnd }}" placeholder="Write your Identity Card">
+                                    </div>
+                                </div>
+                                <div class="row mt-3">
+                                    <div class="col-md-6 form-group">
+                                        <label>Address</label>
+                                        <input type="text" class="form-control" name="address" placeholder="Write your address" value="{{ current_user.address }}">
+                                    </div>
+                                    <div class="col-md-6 form-group">
+                                        <label>Phone Number</label>
+                                        <input type="text" class="form-control" name="phone" value="{{ current_user.phone }}" placeholder="Write your phone number">
+                                    </div>
+                                </div>
+                                <div class="mt-5 text-right">
+                                    <a href="{{url_for('change_password')}}">
+                                        <input class="btn btn-primary avatar-btn chpwd-btn" value="Change Password" type="button"/>
+                                    </a>
+                                    <button class="btn btn-primary avatar-btn" type="submit">Save Profile</button></div>
+                                </div>
+                                <br>
+                                {% if suc_msg %}
+        				        <div class="alert alert-success">{{suc_msg}}</div>
+    				            {% endif %}
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+<!-- newsletter-top-serv-btm -->
+	<div class="newsletter-top-serv-btm">
+		<div class="container">
+			<div class="col-md-4 wthree_news_top_serv_btm_grid">
+				<div class="wthree_news_top_serv_btm_grid_icon">
+					<i class="fa fa-shopping-cart" aria-hidden="true"></i>
+				</div>
+				<h3>Nam libero tempore</h3>
+				<p>Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus
+					saepe eveniet ut et voluptates repudiandae sint et.</p>
+			</div>
+			<div class="col-md-4 wthree_news_top_serv_btm_grid">
+				<div class="wthree_news_top_serv_btm_grid_icon">
+					<i class="fa fa-bar-chart" aria-hidden="true"></i>
+				</div>
+				<h3>officiis debitis aut rerum</h3>
+				<p>Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus
+					saepe eveniet ut et voluptates repudiandae sint et.</p>
+			</div>
+			<div class="col-md-4 wthree_news_top_serv_btm_grid">
+				<div class="wthree_news_top_serv_btm_grid_icon">
+					<i class="fa fa-truck" aria-hidden="true"></i>
+				</div>
+				<h3>eveniet ut et voluptates</h3>
+				<p>Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus
+					saepe eveniet ut et voluptates repudiandae sint et.</p>
+			</div>
+			<div class="clearfix"> </div>
+		</div>
+	</div>
+<!-- //newsletter-top-serv-btm -->
+{% include 'subscribe.html' %}
+{% endblock %}

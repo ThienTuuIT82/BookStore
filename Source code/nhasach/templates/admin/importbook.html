@@ -1,0 +1,150 @@
+{% extends 'admin/index.html' %}
+
+{% block page_content %}
+<h1 class="text-center text-black">PHIẾU NHẬP SÁCH</h1>
+      {% if 'message' in session %}
+      <div class="alert alert-warning text-center">{{ session['message'] }}</div>
+      {% else %}
+      <div></div>
+      {% endif %}
+        <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+          <li class="nav-item">
+            <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Nhập thêm sách đã có</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Nhập sách mới</a>
+          </li>
+        </ul>
+  <div class="tab-content" id="pills-tabContent">
+    <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+    <form action="{{url_for('import_book', new='False', confirm='False')}}" method="post">
+
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label>Name</label>
+            <input type="text" name="name" class="form-control" placeholder="Name Book" required>
+            <small class="form-text text-light">Nhập tên sách cần nhập thêm</small>
+          </div>
+          <div class="form-group col-md-6">
+            <label>Amount</label>
+            <input type="number" name="amount" class="form-control" placeholder="Amount" required>
+            <small class="form-text text-light">Nhập số lượng sách</small>
+          </div>
+          <div class="form-group col-md-12">
+            <input type="submit" value="Submit" class="btn btn-danger col-md-12">
+          </div>
+        </div>
+    </form>
+    </div>
+    <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+        <form action="{{url_for('import_book', new='True', confirm='False')}}" method="post">
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label>Name</label>
+            <input type="text" name="name" class="form-control" placeholder="Name Book" required>
+            <small class="form-text text-light">Nhập tên sách cần thêm mới</small>
+          </div>
+          <div class="form-group col-md-6">
+            <label>Price</label>
+            <input type="text" name="price" class="form-control" placeholder="Price" required>
+            <small class="form-text text-light">Nhập giá tiền của sách</small>
+          </div>
+          <div class="form-group col-md-6">
+            <label>Author</label>
+            <input type="text" name="author" class="form-control" placeholder="Author" required>
+            <small class="form-text text-light">Nhập tên tác giả</small>
+          </div>
+          <div class="form-group col-md-6">
+            <label>Amount</label>
+            <input type="number" name="amount" class="form-control" placeholder="Amount" required>
+            <small class="form-text text-light">Nhập số lượng sách</small>
+          </div>
+          <div class="form-group col-md-6">
+            <label>Image</label>
+            <input type="text" name="image" class="form-control" placeholder="Path">
+            <small class="form-text text-light">Nhập đường dẫn chứa image</small>
+          </div>
+          <div class="form-group col-md-6">
+            <label>Category</label>
+            <input type="text" name="category" class="form-control" placeholder="Category" required>
+            <small class="form-text text-light">Nhập thể loại sách</small>
+          </div>
+          <div class="form-group col-md-12">
+            <label>Description</label>
+            <textarea class="form-control" name="description" rows="5" id="comment"></textarea>
+            <small class="form-text text-light">Nhập description của sách</small>
+          </div>
+          <div class="form-group col-md-12">
+            <input type="submit" value="Submit" class="btn btn-danger col-md-12">
+          </div>
+        </div>
+    </form>
+    </div>
+  </div>
+<h1 class="text-center text-warning">DANH SÁCH ĐÃ NHẬP</h1>
+<form action="{{url_for('import_book', confirm='True')}}" method="post">
+<table class="table table-striped table-bordered table-hover model-list table-light" style="width:80%; margin:0 auto">
+            <thead class="thead-dark">
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Name</th>
+                <th scope="col">Price</th>
+                <th scope="col">Author</th>
+                <th scope="col">Amount</th>
+                <th scope="col">Image</th>
+                <th scope="col">Category ID</th>
+                <th scope="col">Delete</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% if 'import_book' in session %}
+                {% for b in session['import_book'].values() %}
+            <tr>
+                <th scope="row">#{{ b.id }}</th>
+                <td>{{ b.name }}</td>
+                <td>{{ b.price }}</td>
+                <td>{{ b.author }}</td>
+                <td>{{ b.amount }}</td>
+                <td>{{ b.image }}</td>
+                <td>{{ b.category_id }}</td>
+                <td><input onclick="del_one_import({{b.id}})" type="submit" class="fa fa-trash"></td>
+            </tr>
+            {% endfor %}
+            {% else %}
+            <tr>
+                <th colspan="8"><h3 class="text-center text-black">Chưa có sản phẩm nào được nhập!</h3></th>
+            </tr>
+            {% endif %}
+            </tbody>
+        </table>
+        {% if 'import_book' in session %}
+        <br>
+        <div class="container">
+            <div class="row">
+                <div class="col text-center">
+                    <input type="submit" class="btn btn-danger" value="XÁC NHẬN PHIẾU NHẬP SÁCH" />
+                </div>
+            </div>
+        </div>
+        {% endif %}
+    </form>
+<script>
+function del_one_import(id) {
+    fetch('/admin/delbook', {
+        method: "post",
+        body: JSON.stringify({
+            'id': id
+        }),
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    }).then(res => res.json()).then(data => {
+        console.info(data);
+        location.reload();
+    }).catch(err => {
+        console.log(err);
+    })
+
+}
+</script>
+{% endblock %}

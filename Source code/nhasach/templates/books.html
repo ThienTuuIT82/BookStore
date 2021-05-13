@@ -1,0 +1,156 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<!-- products-breadcrumb -->
+	<div class="products-breadcrumb">
+		<div class="container">
+			<ul>
+				<li><i class="fa fa-home" aria-hidden="true"></i><a href="{{url_for('index')}}">Home</a><span>|</span></li>
+				<li style="color:white">All Books</li>
+			</ul>
+		</div>
+	</div>
+<!-- //products-breadcrumb -->
+<!-- banner -->
+	<div class="banner">
+		{% include 'sidebar.html' %}
+		{% include 'filter.html' %}
+		<div class="w3l_banner_nav_right">
+			<div class="w3ls_w3l_banner_nav_right_grid">
+				<h3>Manga</h3>
+				<div class="w3ls_w3l_banner_nav_right_grid1">
+					{% for t in manga %}
+					<div class="col-md-3 w3ls_w3l_banner_left">
+						<div class="hover14 column">
+						<div class="agile_top_brand_left_grid w3l_agile_top_brand_left_grid">
+							<div class="agile_top_brand_left_grid_pos">
+								<img src="static/images/offer.png" alt=" " class="img-responsive" />
+							</div>
+							<div class="agile_top_brand_left_grid1">
+								<figure>
+									<div class="snipcart-item block">
+										<div class="snipcart-thumb">
+											<a href="single/bookid={{t.id}}"><img src="{{ t.image }}" alt=" " class="img-responsive" /></a>
+											<p>{{t.name}}</p>
+											<h4>{{ t.price - 0.1*t.price }}<span>{{ t.price }}</span></h4>
+										</div>
+										<div class="snipcart-details">
+											<form action="#" method="post">
+												<fieldset>
+													<input type="hidden" name="cmd" value="_cart" />
+													<input type="hidden" name="add" value="1" />
+													<input type="hidden" name="business" value=" " />
+													<input type="hidden" name="item_name" value="{{ t.name }}" />
+													<input type="hidden" name="amount" value="{{ t.price }}" />
+													<input type="hidden" name="discount_amount" value="{{ t.price*0.1 }}" />
+													<input type="hidden" name="currency_code" value="VND" />
+													<input type="hidden" name="return" value=" " />
+													<input type="hidden" name="cancel_return" value=" " />
+													<input type="submit" name="submit" value="Add to cart" class="button" />
+												</fieldset>
+											</form>
+										</div>
+									</div>
+								</figure>
+							</div>
+						</div>
+						</div>
+					</div>
+					{% endfor %}
+					<div class="clearfix"> </div>
+				</div>
+			</div>
+			<div class="w3ls_w3l_banner_nav_right_grid">
+				<h3>Novel</h3>
+				<div class="w3ls_w3l_banner_nav_right_grid1">
+					{% for t in novel %}
+					<div class="col-md-3 w3ls_w3l_banner_left">
+						<div class="hover14 column">
+						<div class="agile_top_brand_left_grid w3l_agile_top_brand_left_grid">
+							<div class="agile_top_brand_left_grid_pos">
+								<img src="static/images/offer.png" alt=" " class="img-responsive" />
+							</div>
+							<div class="agile_top_brand_left_grid1">
+								<figure>
+									<div class="snipcart-item block">
+										<div class="snipcart-thumb">
+											<a href="single/bookid={{t.id}}"><img src="{{ t.image }}" alt=" " class="img-responsive" /></a>
+											<p>{{t.name}}</p>
+											<h4>{{ t.price - 0.1*t.price }}<span>{{ t.price }}</span></h4>
+										</div>
+										<div class="snipcart-details">
+											<form action="#" method="post">
+												<fieldset>
+													<input type="hidden" name="cmd" value="_cart" />
+													<input type="hidden" name="add" value="1" />
+													<input type="hidden" name="business" value=" " />
+													<input type="hidden" name="item_name" value="{{ t.name }}" />
+													<input type="hidden" name="amount" value="{{ t.price }}" />
+													<input type="hidden" name="discount_amount" value="{{ t.price*0.1 }}" />
+													<input type="hidden" name="currency_code" value="VND" />
+													<input type="hidden" name="return" value=" " />
+													<input type="hidden" name="cancel_return" value=" " />
+													<input type="submit" name="submit" value="Add to cart" class="button" />
+												</fieldset>
+											</form>
+										</div>
+									</div>
+								</figure>
+							</div>
+						</div>
+						</div>
+					</div>
+					{% endfor %}
+					<div class="clearfix"> </div>
+				</div>
+			</div>
+			<div class="w3ls_w3l_banner_nav_right_grid">
+				<h3>Detective</h3>
+				<div class="w3ls_w3l_banner_nav_right_grid1">
+					{% for t in detective %}
+					<div class="col-md-3 w3ls_w3l_banner_left">
+						<div class="hover14 column">
+						<div class="agile_top_brand_left_grid w3l_agile_top_brand_left_grid">
+							<div class="agile_top_brand_left_grid_pos">
+								<img src="static/images/offer.png" alt=" " class="img-responsive" />
+							</div>
+							<div class="agile_top_brand_left_grid1">
+								<figure>
+									<div class="snipcart-item block">
+										<div class="snipcart-thumb">
+											<a href="single/bookid={{t.id}}"><img src="{{ t.image }}" alt=" " class="img-responsive" /></a>
+											<p>{{t.name}}</p>
+											<h4>{{ t.price - 0.1*t.price }}<span>{{ t.price }}</span></h4>
+										</div>
+										<div class="snipcart-details">
+											<form action="#" method="post">
+												<fieldset>
+													<input type="hidden" name="cmd" value="_cart" />
+													<input type="hidden" name="add" value="1" />
+													<input type="hidden" name="business" value=" " />
+													<input type="hidden" name="item_name" value="{{ t.name }}" />
+													<input type="hidden" name="amount" value="{{ t.price }}" />
+													<input type="hidden" name="discount_amount" value="{{ t.price*0.1 }}" />
+													<input type="hidden" name="currency_code" value="VND" />
+													<input type="hidden" name="return" value=" " />
+													<input type="hidden" name="cancel_return" value=" " />
+													<input type="submit" name="submit" value="Add to cart" class="button" />
+												</fieldset>
+											</form>
+										</div>
+									</div>
+								</figure>
+							</div>
+						</div>
+						</div>
+					</div>
+					{% endfor %}
+					<div class="clearfix"> </div>
+				</div>
+			</div>
+		</div>
+		<div class="clearfix"></div>
+	</div>
+<!-- //banner -->
+{% include 'subscribe.html' %}
+{% endblock %}

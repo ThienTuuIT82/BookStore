@@ -1,0 +1,108 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<!-- products-breadcrumb -->
+	<div class="products-breadcrumb">
+		<div class="container">
+			<ul>
+				<li><i class="fa fa-home" aria-hidden="true"></i><a href="{{url_for('index')}}">Home</a><span>|</span></li>
+				<li style="color:white">FAQ's</li>
+			</ul>
+		</div>
+	</div>
+<!-- //products-breadcrumb -->
+<!-- faq -->
+		<div class="faq">
+			<h3>FAQ's</h3>
+			<div class="panel-group w3l_panel_group_faq" id="accordion" role="tablist" aria-multiselectable="true">
+			  <div class="panel panel-default">
+				<div class="panel-heading" role="tab" id="headingOne">
+				  <h4 class="panel-title asd">
+					<a class="pa_italic" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+					  <span class="glyphicon glyphicon-plus" aria-hidden="true"></span><i class="glyphicon glyphicon-minus" aria-hidden="true"></i>phương thức thanh toán
+					</a>
+				  </h4>
+				</div>
+				<div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+				  <div class="panel-body panel_text">
+					Hiện tại CTT Book Store hỗ trợ bạn 3 hình thức thanh toán chính là COD, MOMO, INTERNET BANKING và PAYPAL
+				  </div>
+				</div>
+			  </div>
+			  <div class="panel panel-default">
+				<div class="panel-heading" role="tab" id="headingTwo">
+				  <h4 class="panel-title asd">
+					<a class="pa_italic collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+					  <span class="glyphicon glyphicon-plus" aria-hidden="true"></span><i class="glyphicon glyphicon-minus" aria-hidden="true"></i>phương thức vận chuyển
+					</a>
+				  </h4>
+				</div>
+				<div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+				   <div class="panel-body panel_text">
+					Chia làm 2 loại: khách hàng trong nước và khách hàng quốc tế.<br><br>- Đối với KHÁCH HÀNG TRONG NƯỚC:<br>+ Hỗ trợ giao hàng tận nơi, chuyển phát nhanh.<br>+ Hỗ trợ thanh toán COD, cước phí vận chuyển tùy theo khối lượng hàng hóa.<br><br>- Đối với KHÁCH HÀNG QUỐC TẾ:<br>+ Chuyển thường bằng tàu<br>+ Chuyển thường bằng máy bay<br>+ Chuyển phát nhanh UPS
+				  </div>
+				</div>
+			  </div>
+			  <div class="panel panel-default">
+				<div class="panel-heading" role="tab" id="headingThree">
+				  <h4 class="panel-title asd">
+					<a class="pa_italic collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+					  <span class="glyphicon glyphicon-plus" aria-hidden="true"></span><i class="glyphicon glyphicon-minus" aria-hidden="true"></i>chính sách bảo mật
+					</a>
+				  </h4>
+				</div>
+				<div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+				   <div class="panel-body panel_text">
+						Bảo mật thông tin khách hàng là một trong những vấn đề được chúng tôi ưu tiên nhằm tạo điều kiện tốt nhất cho bạn mua sắm tại CTT Book Store. Vì thế, CTT Book Store cam kết việc sử dụng thông tin cá nhân của khách hàng chỉ nhằm mục đích nâng cao chất lượng dịch vụ, thể hiện sự quan tâm của chúng tôi dành cho bạn và tạo môi trường mua hàng an toàn, tiện lợi tại CTT Book Store. Cụ thể, thông tin của bạn chỉ dùng để:
+					   	<br>
+						- Cung cấp một số tiện ích, nâng cao chất lượng hỗ trợ khách hàng
+					   	<br>
+						- Làm cơ sở giải quyết các vấn đề khiếu nại, tranh chấp phát sinh liên quan đến việc sử dụng sản phẩm, dịch vụ tại website CTT Book Store
+					   	<br>
+						- Ngăn chặn những hoạt động vi phạm pháp luật Việt Nam.
+					   	<br>
+						CTT Book Store cam đoan sẽ không có những hành vi làm lộ thông tin cá nhân của bạn vì mục đích thương mại. Tất cả thông tin giao dịch giữa bạn và CTT Book Store sẽ được bảo mật hoàn toàn. Tuy nhiên, bạn cũng không nên trao đổi những thông tin thanh toán, giao nhận của mình cho một bên thứ ba nào khác để tránh rò rỉ thông tin. Khi sử dụng chung máy tính với nhiều người, bạn vui lòng thoát khỏi tài khoản mỗi khi không sử dụng dịch vụ của CTT Book Store để tự bảo vệ thông tin và mật khẩu truy cập của mình.
+					   	<br>
+						CTT Book Store hiểu rằng quyền lợi của bạn trong việc bảo vệ thông tin cá nhân cũng chính là trách nhiệm của CTT Book Store, nên nếu có bất kỳ thắc mắc hay góp ý nào liên quan đến chính sách bảo mật của CTT Book Store, vui lòng liên hệ với chúng tôi qua số điện thoại (+0123) 234 567 hoặc email contact@bookstore.com
+				  </div>
+				</div>
+			  </div>
+			  <div class="panel panel-default">
+				<div class="panel-heading" role="tab" id="headingFour">
+				  <h4 class="panel-title asd">
+					<a class="pa_italic collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+					  <span class="glyphicon glyphicon-plus" aria-hidden="true"></span><i class="glyphicon glyphicon-minus" aria-hidden="true"></i>điều khoản sử dụng
+					</a>
+				  </h4>
+				</div>
+				<div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
+				   <div class="panel-body panel_text">
+						Chào mừng bạn đến với website mua hàng trực tuyến CTT Book Store. Khi truy cập và mua sắm tại CTT Book Store, xem như bạn đã đồng ý tuân thủ những quy định của CTT Book Store. Vui lòng xem kỹ quy định và kết nối thông tin cùng chúng tôi để xây dựng website CTT Book Store ngày càng thân thiện, cầu tiến và phục vụ quý khách hàng ngày một tốt hơn. Nếu có bất cứ thắc mắc hay đề xuất gì, vui lòng email cho chúng tôi qua địa chỉ info@bookbuy.vn
+						<br><br>
+					   	<strong>Tài khoản của quý khách</strong>
+					   	<br>
+						Khi sử dụng dịch vụ CTT Book Store, bạn cần cung cấp cho chúng tôi thông tin về địa chỉ email, mật khẩu, họ tên… để tạo được một tài khoản thành công. Việc sử dụng và bảo mật thông tin tài khoản là trách nhiệm và quyền lợi của bạn khi mua sắm tại CTT Book Store. Những thông tin khác trong tài khoản của bạn như tên tuổi, địa chỉ.... sẽ là những thông tin giúp CTT Book Store phục vụ bạn tốt nhất. Trong trường hợp thông tin bạn cung cấp không đầy đủ hoặc sai dẫn đến việc không thể giao hàng, chúng tôi có quyền ngưng hoặc từ chối phục vụ, giao hàng mà không phải chịu bất kỳ trách nhiệm nào đối với bạn. Khi cần thay đổi thông tin, bạn vui lòng cập nhật lại tài khoản tại CTT Book Store. Bạn phải chịu trách nhiệm với các hoạt động diễn ra thông qua việc sử dụng tài khoản và mật khẩu của mình, thế nên bạn phải giữ kín chúng. Bạn nên đảm bảo đã thoát khỏi tài khoản tại CTT Book Store sau mỗi lần sử dụng để bảo mật thông tin của chính bạn.
+						<br><br>
+					   	<strong>Quyền lợi bảo mật thông tin của quý khách</strong>
+					   	<br>
+						Khi bạn sử dụng dịch vụ tại website CTT Book Store, chúng tôi đảm bảo rằng, những thông tin bạn cung cấp cho chúng tôi sẽ chỉ được dùng để phục vụ cho những lợi ích dành cho khách hàng của CTT Book Store, tuyệt đối không chuyển giao cho bên thứ ba nào khác vì mục đích thương mại. Chúng tôi cam kết bảo mật thông tin của bạn, ngoại trừ khi cơ quan pháp luật yêu cầu cung cấp.
+						<br><br>
+					   	<strong>Trách nhiệm của bạn khi sử dụng dịch vụ của CTT Book Store</strong>
+					   	<br>
+						Bạn cam kết không sử dụng bất kỳ công cụ, phương pháp nào để can thiệp, xâm nhập bất hợp pháp vào hệ thống hay làm thay đổi cấu trúc dữ liệu tại website CTT Book Store. Khi phát hiện ra lỗi hệ thống, bạn vui lòng thông báo ngay cho quản trị web của CTT Book Store theo số điện thoại (+0123) 234 567 hoặc email contact@bookstore.com
+						<br>
+						Bạn không được đưa ra những nhận xét, đánh giá có ý xúc phạm, quấy rối đối với người khác. Không nêu ra những nhận xét mang yếu tố chính trị (tuyên truyền, chống phá, xuyên tạc chính quyền), kỳ thị tôn giáo, giới tính, sắc tộc.... Tuyệt đối cấm mọi hành vi mạo nhận, cố ý tạo sự nhầm lẫn mình là một khách hàng khác hoặc là thành viên Ban Quản Trị CTT Book Store.
+						<br><br>
+					   	<strong>Trách nhiệm và quyền lợi của CTT Book Store</strong>
+					   	<br>
+						Chúng tôi cam kết bảo mật thông tin của khách hàng, phục vụ khách hàng theo đúng những dịch vụ khách hàng được hưởng từ CTT Book Store. Trong trường hợp có những vấn đề phát sinh ngoài trách nhiệm của CTT Book Store, CTT Book Store sẽ giúp xử lý nhưng không chịu trách nhiệm về mọi tổn thất phát sinh. Chúng tôi cũng sẽ không cho phép các tổ chức, cá nhân nào quảng bá sản phẩm tại website CTT Book Store mà chưa có sự đồng ý bằng văn bản giữa hai bên.
+						<br>
+						Nếu có bất kỳ sự thay đổi nào về các thỏa thuận và quy định trong Điều Khoản Sử Dụng, chúng tôi sẽ thông báo trên website CTT Book Store.
+				  </div>
+				</div>
+			  </div>
+			</div>
+		</div>
+<!-- //faq -->
+{% include 'subscribe.html' %}
+{% endblock %}

@@ -1,0 +1,33 @@
+{% import 'admin/macro.html' as taskcard %}
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <a href="/admin/billview/">{{ taskcard.task('Đơn hàng đã tiếp nhận', 'Chọn mục này để xem danh sách hóa đơn mới nhất của khách hàng', 'Employee') }}</a>
+        </div>
+        <div class="col order-1">
+            <a href="/admin/importbook/">{{ taskcard.task('Phiếu nhập sách', 'Chọn mục này để nhập phiếu nhập sách cũ hoặc thêm sách mới', 'Employee') }}</a>
+        </div>
+        <div class="col order-2">
+            <a href="/admin/infobook/">{{ taskcard.task('Thư mục sách', 'Chọn mục này để xem và chỉnh sửa danh sách các loại sách', 'Employee') }}</a>
+        </div>
+    </div>
+    <br><br><br>
+    <div class="row">
+        <div class="col order-3">
+            {% if current_user.UserRole.name == 'Manager' %}
+           <a href="/admin/user/">{{ taskcard.task('Quản lý tài khoản', 'Chọn mục này để chỉnh sửa thông tin tài khoản khách hàng', 'Manager') }}</a>
+            {% endif %}
+        </div>
+        <div class="col order-4">
+            {% if current_user.UserRole.name == 'Manager' %}
+            <a href="/admin/reportview/">{{ taskcard.task('Lập báo cáo', 'Chọn mục này để lập báo cáo hàng tồn, báo cáo công nợ', 'Manager') }}</a>
+            {% endif %}
+        </div>
+        <div class="col order-5">
+            {% if current_user.UserRole.name == 'Manager' %}
+            <a href="/admin/managerrule/">{{ taskcard.task('Qui định', 'Chọn mục này để chỉnh sửa các qui định của nhà sách', 'Manager') }}</a>
+            {% endif %}
+        </div>
+    </div>
+</div>

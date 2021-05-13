@@ -1,0 +1,118 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<!-- products-breadcrumb -->
+	<div class="products-breadcrumb">
+		<div class="container">
+			<ul>
+				<li><i class="fa fa-home" aria-hidden="true"></i><a href="{{url_for('index')}}">Home</a><span>|</span></li>
+				<li style="color:white">Manga</li>
+			</ul>
+		</div>
+	</div>
+<!-- //products-breadcrumb -->
+<!-- banner -->
+	<div class="banner">
+		{% include 'sidebar.html' %}
+		<div class="w3l_banner_nav_right">
+			<div class="w3l_banner_nav_right_banner3">
+				<h3 style="background-color: transparent;">The Hottest Manga Series<span class="blink_me"></span></h3>
+			</div>
+			<div class="w3l_banner_nav_right_banner3_btm">
+				<div class="col-md-4 w3l_banner_nav_right_banner3_btml">
+					<div class="view view-tenth">
+						<img src="static/images/Doraemon_hot.jpg" alt=" " class="img-responsive" />
+						<div class="mask">
+							<h4>Doraemon</h4>
+							<p>Bộ truyện Doraemon là ý tưởng được nảy sinh một cách hoàn toàn ngẫu nhiên: sau khi vấp phải đồ chơi của cô con gái và nghe thấy tiếng mèo kêu, ông bắt đầu nghĩ đến một cỗ máy có khả năng giúp mình tạo ra bộ manga.</p>
+						</div>
+					</div>
+					<h4>Doraemon</h4>
+					<ol>
+						<li>Tác giả: Fujiko F.Fujio</li>
+						<li>Nhà xuất bản: Kim Đồng</li>
+						<li>Năm xuất bản: 15/12/1969</li>
+					</ol>
+				</div>
+				<div class="col-md-4 w3l_banner_nav_right_banner3_btml">
+					<div class="view view-tenth">
+						<img src="static/images/Conan_hot.jpg" alt=" " class="img-responsive" />
+						<div class="mask">
+							<h4>Conan</h4>
+							<p>Conan là bộ truyện được lấy cảm hứng từ Arsène Lupin, Sherlock Holmes, và loạt phim về Samurai của Akira Kurosawa. Tác giả Aoyama nói rằng ông dành ra 4 tiếng để nghĩ cốt truyện cho một vụ án bình thường, và 12 tiếng cho một vụ phức tạp</p>
+						</div>
+					</div>
+					<h4>Conan</h4>
+					<ol>
+						<li>Tác giả: Gosho Aoyama</li>
+						<li>Nhà xuất bản: Kim Đồng</li>
+						<li>Năm xuất bản: 19/1/1994</li>
+					</ol>
+				</div>
+				<div class="col-md-4 w3l_banner_nav_right_banner3_btml">
+					<div class="view view-tenth">
+						<img src="static/images/Naruto_hot.jpg" alt=" " class="img-responsive" />
+						<div class="mask">
+							<h4>Naruto</h4>
+							<p>Naruto là bộ truyện được lấy ý tưởng từ các bộ manga shōnen và các tên nhận vật được vay mượn từ văn hoá dân gian và văn học Nhật Bản (như cái tên của Jiraiya - thầy háo sắc của Naruto được lấy từ truyện dân gian Jiraiya Goketsu Monogatari</p>
+						</div>
+					</div>
+					<h4>Naruto</h4>
+					<ol>
+						<li>Tác giả: Kishimoto Masashi</li>
+						<li>Nhà xuất bản: Kim Đồng</li>
+						<li>Năm xuất bản: 11/1999</li>
+					</ol>
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+			<div class="w3ls_w3l_banner_nav_right_grid">
+				<h3>Novel</h3>
+				<div class="w3ls_w3l_banner_nav_right_grid1">
+					{% for t in novel %}
+					<div class="col-md-3 w3ls_w3l_banner_left">
+						<div class="hover14 column product-margin">
+						<div class="agile_top_brand_left_grid w3l_agile_top_brand_left_grid">
+							<div class="agile_top_brand_left_grid_pos">
+								<img src="static/images/offer.png" alt=" " class="img-responsive" />
+							</div>
+							<div class="agile_top_brand_left_grid1">
+								<figure>
+									<div class="snipcart-item block">
+										<div class="snipcart-thumb">
+											<a href="single/bookid={{t.id}}"><img src="{{ t.image }}" alt=" " class="img-responsive" /></a>
+											<p>{{t.name}}</p>
+											<h4>{{ "{:,.1f}".format(t.price - 0.1*t.price) }} VNĐ<span>{{ "{:,.1f}".format(t.price) }} VNĐ</span></h4>
+										</div>
+										<div class="snipcart-details">
+											<form action="#" method="post">
+												<fieldset>
+													<input type="hidden" name="cmd" value="_cart" />
+													<input type="hidden" name="add" value="1" />
+													<input type="hidden" name="business" value=" " />
+													<input type="hidden" name="item_name" value="{{ t.name }}" />
+													<input type="hidden" name="amount" value="{{ t.price }}" />
+													<input type="hidden" name="discount_amount" value="{{ t.price*0.1 }}" />
+													<input type="hidden" name="currency_code" value="VND" />
+													<input type="hidden" name="return" value=" " />
+													<input type="hidden" name="cancel_return" value=" " />
+													<input type="submit" name="submit" value="Add to cart" class="button" />
+												</fieldset>
+											</form>
+										</div>
+									</div>
+								</figure>
+							</div>
+						</div>
+						</div>
+					</div>
+					{% endfor %}
+					<div class="clearfix"> </div>
+				</div>
+			</div>
+		</div>
+		<div class="clearfix"></div>
+	</div>
+<!-- //banner -->
+{% include 'subscribe.html' %}
+{% endblock %}

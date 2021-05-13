@@ -1,0 +1,106 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<!-- products-breadcrumb -->
+	<div class="products-breadcrumb">
+		<div class="container">
+			<ul>
+				<li><i class="fa fa-home" aria-hidden="true"></i><a href="{{url_for('index')}}">Home</a><span>|</span></li>
+				<li style="color:white">Checkout</li>
+			</ul>
+		</div>
+	</div>
+<!-- //products-breadcrumb -->
+<!-- banner -->
+	<div class="banner">
+		{% include 'sidebar.html' %}
+		<div class="w3l_banner_nav_right">
+<!-- about -->
+		<div class="privacy about">
+			<h3>Chec<span>kout</span></h3>
+
+	      <div class="checkout-right">
+				<table class="timetable_sub">
+					<thead>
+						<tr>
+							<th>SL No.</th>
+							<th>Product</th>
+							<th>Quantity</th>
+							<th>Product Name</th>
+
+							<th>Price</th>
+						</tr>
+					</thead>
+					<tbody>
+					{% for b in books %}
+					<tr class="rem1">
+						<td class="invert" style="font-size:25px">{{ loop.index }}</td>
+						<td class="invert-image"><a><img src="{{b[3]}}" alt=" " class="img-responsive"></a></td>
+						<td class="invert" style="font-size:25px">{{ b[1] }}</td>
+						<td class="invert" style="font-size:25px">{{ b[0] }}</td>
+						<td class="invert" style="font-size:25px">{{ "{:,.1f}".format(b[2]) }} VND</td>
+					</tr>
+					{% endfor %}
+				</tbody></table>
+			</div>
+			<div class="checkout-left">
+				<div class="col-md-4 checkout-left-basket">
+					<h4>Total Bill</h4>
+					<ul>
+						{% for b in books %}
+						<li style="font-size:15px">{{ b[0] }} x amount {{ b[1] }} <i>-</i> <span>{{ "{:,.1f}".format(b[2]) }} VND</span></li>
+						{% endfor %}
+						<li style="font-size:20px; font-weight:bold">Total price <i>-</i> <span>{{ "{:,.1f}".format(total) }} VND</span></li>
+					</ul>
+				</div>
+				<div class="col-md-8 address_form_agile">
+					  <h4>Add a new Details</h4>
+				<form action="{{ url_for('payment') }}" method="post" class="creditly-card-form agileinfo_form">
+									<section class="creditly-wrapper wthree, w3_agileits_wrapper">
+										<div class="information-wrapper">
+											<div class="first-row form-group">
+												<div class="controls">
+													<label class="control-label">Full name: </label>
+													<input class="billing-address-name form-control" type="text" name="name" placeholder="Full name" value="{{ current_user.name }}" required>
+												</div>
+												<div class="w3_agileits_card_number_grids">
+													<div class="w3_agileits_card_number_grid_left">
+														<div class="controls">
+															<label class="control-label">Mobile number:</label>
+															{% if current_user.phone %}
+														    	<input class="form-control" name="phone" type="text" placeholder="Mobile number" value="{{ current_user.phone }}" required>
+															{% else %}
+														    	<input class="form-control" name="phone" type="text" placeholder="Mobile number" value="" required>
+															{% endif %}
+														</div>
+													</div>
+													<div class="w3_agileits_card_number_grid_right">
+														<div class="controls">
+															<label class="control-label">Address: </label>
+															{% if current_user.address %}
+														 		<input class="form-control" name="address" type="text" placeholder="Your address" value="{{ current_user.address }}" required>
+															{% else %}
+																<input class="form-control" name="address" type="text" placeholder="Your address" value="" required>
+															{% endif %}
+														</div>
+													</div>
+													<div class="clear"> </div>
+												</div>
+											</div>
+										</div>
+									</section>
+									<input type="submit" style="background-image: linear-gradient(to right, #fc4a1a , #f7b733);letter-spacing: 3px;padding: 6px 50px 11px;color:white" value="Make a payment">
+								</form>
+					</div>
+
+				<div class="clearfix"> </div>
+
+			</div>
+
+		</div>
+<!-- //about -->
+		</div>
+		<div class="clearfix"></div>
+	</div>
+<!-- //banner -->
+{% endblock %}
